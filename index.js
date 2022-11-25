@@ -1,6 +1,6 @@
 const express = require('express');
 const ProductsRouter = require('./Routes/ProductsRoute')
-
+const cors = require('cors')
 
 const connectDatabase = require('./database/connection')
 
@@ -12,7 +12,7 @@ const {logData} = require('./middlewares/logger.js')
 
 const hbs = require('hbs')
 
-const PORT = 4000;	
+const PORT = 5000;	
 const app = express();
 
 // connect data base
@@ -28,6 +28,7 @@ hbs.registerPartials('./views/partials')
 app.use(express.static('./public'))
 // express.js helps to parse data in json file.
 app.use(express.json())
+app.use(cors());
 
 // custom middleware
 // app.use(logData)
